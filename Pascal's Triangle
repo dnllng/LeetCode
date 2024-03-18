@@ -1,0 +1,15 @@
+class Solution:
+    def generate(self, numRows: int) -> List[List[int]]:
+        if numRows == 1:
+            return [[1]]
+        if numRows == 2:
+            return [[1],[1,1]]
+        answer = [[1],[1,1]]
+        for i in range(numRows-2):
+            x = answer[-1]
+            y = answer[-1][1:]
+            z = [x + y for x, y in zip(x, y)]
+            z.insert(0, 1)
+            z.append(1)
+            answer.append(z)
+        return answer
